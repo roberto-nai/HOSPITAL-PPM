@@ -167,6 +167,18 @@ if __name__ == '__main__':
             train_size, val_size, test_size = CONF['train_val_test_split']
             train_df, val_df, test_df = split_train_val_test(full_df, train_size, val_size, test_size, shuffle=False, seed=CONF['seed'])
 
+            label_distribution_train = train_df['label'].value_counts()
+            print("Label distribution in train_df:")
+            print(label_distribution_train)
+
+            label_distribution_val = val_df['label'].value_counts()
+            print("Label distribution in val_size:")
+            print(label_distribution_val)
+
+            label_distribution_test = test_df['label'].value_counts()
+            print("Label distribution in test_df:")
+            print(label_distribution_test)
+            
             print('Instantiating predictive models...')
             predictive_models = [PredictiveModel(predictive_model, train_df, val_df, test_df, prefix_length=CONF['prefix_length']) for predictive_model in CONF['predictive_models']]
 
@@ -191,10 +203,18 @@ if __name__ == '__main__':
             # plot_model_comparison(results)
             print(f'Evaluation: {initial_result}')
 
+            # CReate a DataFrame with the results
+            # Extract label distributions
+            label_0_count = label_distribution_train.get(0, 0)  # Get count for label 0, default to 0 if not present
+            label_1_count = label_distribution_train.get(1, 0)  # Get count for label 1, default to 0 if not present
+
             initial_result_df = pd.DataFrame([initial_result])
             initial_result_df.insert(0, 'prefix_length', prefix_len)
             initial_result_df.insert(1, 'encoding', encoding.value)
-            initial_result_df.insert(2, 'model', ClassificationMethods.XGBOOST.value)
+            initial_result_df.insert(2, 'label_0_train', label_0_count)
+            initial_result_df.insert(3, 'label_1_train', label_1_count)
+            initial_result_df.insert(4, 'model', ClassificationMethods.XGBOOST.value)
+            
             list_results.append(initial_result_df)
             
             print(f"--- End of cycle ({i}) ---")
