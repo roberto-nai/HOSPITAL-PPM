@@ -197,7 +197,7 @@ if __name__ == '__main__':
             initial_result_df.insert(2, 'model', ClassificationMethods.XGBOOST.value)
             list_results.append(initial_result_df)
             
-            print("--- End of cycle ---")
+            print(f"--- End of cycle ({i}) ---")
             print()
 
             '''
