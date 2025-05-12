@@ -45,7 +45,6 @@ if __name__ == '__main__':
     np.random.seed(SEED)
 
     ### INPUT LOG ###
-    list_prefix_length = list(range(MIN_PREFIX_LENGTH, MAX_PREFIX_LENGTH + 1))
     path_log = Path(LOG_DIR) / INPUT_LOG
     print(f'Input log: {path_log}')
     print()
@@ -60,6 +59,7 @@ if __name__ == '__main__':
 
     ### PREFIX LENGTH LIST ###
     print(f'Prefix length list:')
+    list_prefix_length = list(range(MIN_PREFIX_LENGTH, MAX_PREFIX_LENGTH + 1))
     print(list_prefix_length)
     print()
 
