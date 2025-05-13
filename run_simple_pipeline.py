@@ -28,9 +28,10 @@ RESULTS_DIR = 'results'     # directory to save ML results
 ### INPUT PARAMETERS ###
 MIN_PREFIX_LENGTH = 1       # minimum prefix length (included)
 MAX_PREFIX_LENGTH = 8       # maximum prefix length (included)
-# INPUT_LOG = 'eventlog_anonymous.csv'  # log file name
-INPUT_LOG = 'BPIC11_f1.csv'  # log file name
+INPUT_LOG = 'eventlog_anonymous.csv'  # log file name
+# INPUT_LOG = 'BPIC11_f1.csv'  # log file name
 CSV_SEP = ';'                # separator used in the log file
+
 ### MAIN ###
 if __name__ == '__main__':
 
