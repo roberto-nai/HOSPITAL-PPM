@@ -276,7 +276,7 @@ if __name__ == '__main__':
     ### SAVE RESULTS ###
     print('Saving results...')
     results_df = pd.concat(list_results, ignore_index=True)
-    path_results = Path(RESULTS_DIR) / f'{Path(INPUT_LOG).stem}_{CONF['predictive_model']}_results.csv'
+    path_results = Path(RESULTS_DIR) / f'{Path(INPUT_LOG).stem}_{CONF["predictive_model"]}_results.csv'
     print(f'Saving results to: {path_results}')
     results_df.to_csv(path_results, index=False)
     print()
