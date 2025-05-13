@@ -28,7 +28,8 @@ RESULTS_DIR = 'results'     # directory to save ML results
 ### INPUT PARAMETERS ###
 MIN_PREFIX_LENGTH = 1       # minimum prefix length (included)
 MAX_PREFIX_LENGTH = 8       # maximum prefix length (included)
-INPUT_LOG = 'eventlog_anonymous.csv'  # log file name
+# INPUT_LOG = 'eventlog_anonymous.csv'  # log file name
+INPUT_LOG = 'BPIC11_f1.csv'  # log file name
 
 ### MAIN ###
 if __name__ == '__main__':
@@ -275,7 +276,7 @@ if __name__ == '__main__':
     ### SAVE RESULTS ###
     print('Saving results...')
     results_df = pd.concat(list_results, ignore_index=True)
-    path_results = Path(RESULTS_DIR) / f'{Path(INPUT_LOG).stem}_results.csv'
+    path_results = Path(RESULTS_DIR) / f'{Path(INPUT_LOG).stem}_{CONF['predictive_model']}_results.csv'
     print(f'Saving results to: {path_results}')
     results_df.to_csv(path_results, index=False)
     print()
